@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace:命令空间。现在可以随便起名。
+后续需要和dao的名称一致。
+-->
+<mapper namespace="com.aaa.sm.dao.StudentDao">
+
+    <!--列名和属于名之间的映射：-->
+    <resultMap id="StudentMapper" type="Student">
+        <id column="id" property="id"/>
+        <result column="student_no" property="no"/>
+        <result column="name" property="name"/>
+        <result column="gender" property="gender"/>
+        <result column="birthday" property="birthday" javaType="DATE"/>
+        <result column="class_id" property="classId"/>
+        <result column="phone" property="phone"/>
+        <!--association: 一对一或多对一的映射关系
+        property: 表示对应对象的属性名
+        javaType: 表示对象的类型
+        -->
+        <association property="clazz" javaType="Clazz">
+            <id column="id" property="cid"/>
+            <result column="class_name" property="name"/>
+            <result column="grade" property="grade"/>
+            <result column="head_teacher" property="teacher"/>
+            <result column="room" property="room"/>
+        </association>
+    </resultMap>
+
+    <select id="getById" resultMap="StudentMapper">
+        select * from student where id = #{id}
+    </select>
+
+    <!--insert: 新增学生操作-->
+    <insert id="insert" >
+        insert into student(student_no, name, gender, birthday, class_id, phone)
+        values(#{no}, #{name}, #{gender}, #{birthday}, #{classId}, #{phone})
+    </insert>
+
+
+</mapper>
