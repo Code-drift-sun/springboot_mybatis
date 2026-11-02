@@ -12,9 +12,67 @@
         <result column="class_name" property="name"/>
         <result column="grade" property="grade"/>
         <result column="head_teacher" property="teacher"/>
+        <result column="room" property="room"/>
     </resultMap>
 
+    <!--查询条件复用-->
+    <!--suppress SqlResolve -->
+    <sql id="queryCondition">
+        <where>
+            <if test="name != null and name != ''">
+                and class_name like concat('%', #{name}, '%')
+            </if>
+            <if test="room != null and room != ''">
+                and room like concat('%', #{room}, '%')
+            </if>
+        </where>
+    </sql>
+
     <select id="getById" resultMap="ClazzMapper">
-        select * from class where id=#{id}
+        select id, class_name, grade, head_teacher, room from class where id=#{id}
     </select>
+
+    <!--查询全部班级：前端下拉框用-->
+    <select id="listAll" resultMap="ClazzMapper">
+        select id, class_name, grade, head_teacher, room from class order by id
+    </select>
+
+    <!--条件查询：分页由PageHelper插件拦截并自动拼接limit，这里不要写limit-->
+    <select id="list" resultMap="ClazzMapper">
+        select id, class_name, grade, head_teacher, room
+        from class
+        <include refid="queryCondition"/>
+        order by id asc
+    </select>
+
+    <!--insert: 新增班级操作-->
+    <insert id="insert">
+        insert into class(class_name, grade, head_teacher, room)
+        values(#{name}, #{grade}, #{teacher}, #{room})
+    </insert>
+
+    <!--update: 修改班级操作，用set+if实现按需更新，没传的字段保持原值-->
+    <update id="update">
+        update class
+        <set>
+            <if test="name != null and name != ''">
+                class_name = #{name},
+            </if>
+            <if test="grade != null and grade != ''">
+                grade = #{grade},
+            </if>
+            <if test="teacher != null and teacher != ''">
+                head_teacher = #{teacher},
+            </if>
+            <if test="room != null and room != ''">
+                room = #{room},
+            </if>
+        </set>
+        where id = #{cid}
+    </update>
+
+    <!--delete: 删除班级操作-->
+    <delete id="deleteById">
+        delete from class where id = #{id}
+    </delete>
 </mapper>

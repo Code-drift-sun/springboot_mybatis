@@ -8,4 +8,13 @@ public interface StudentService {
 
     //新增学生
     public Result insert(Student student);
+
+    //分页+条件查询
+    public Result list(String name, String className, int pageNum, int pageSize);
+
+    //修改学生
+    public Result update(Student student);
+
+    //删除学生
+    public Result delete(int id);
 }
