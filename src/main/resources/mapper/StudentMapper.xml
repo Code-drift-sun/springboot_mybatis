@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<!--namespace:命令空间。现在可以随便起名。
-后续需要和dao的名称一致。
--->
 <mapper namespace="com.aaa.sm.dao.StudentDao">
 
-    <!--列名和属于名之间的映射：-->
+    <!--列名和属性名之间的映射-->
     <resultMap id="StudentMapper" type="Student">
         <id column="id" property="id"/>
         <result column="student_no" property="no"/>
@@ -60,47 +57,5 @@
         left join class c on s.class_id = c.id
         <include refid="queryCondition"/>
         order by s.id asc
-    </select>
-
-    <!--insert: 新增学生操作-->
-    <insert id="insert" >
-        insert into student(student_no, name, gender, birthday, class_id, phone)
-        values(#{no}, #{name}, #{gender}, #{birthday}, #{classId}, #{phone})
-    </insert>
-
-    <!--update: 修改学生操作，用set+if实现按需更新，没传的字段保持原值-->
-    <update id="update">
-        update student
-        <set>
-            <if test="no != null and no != ''">
-                student_no = #{no},
-            </if>
-            <if test="name != null and name != ''">
-                name = #{name},
-            </if>
-            <if test="gender != null and gender != ''">
-                gender = #{gender},
-            </if>
-            <if test="birthday != null">
-                birthday = #{birthday},
-            </if>
-            <if test="classId != null">
-                class_id = #{classId},
-            </if>
-            <if test="phone != null and phone != ''">
-                phone = #{phone},
-            </if>
-        </set>
-        where id = #{id}
-    </update>
-
-    <!--delete: 删除学生操作-->
-    <delete id="deleteById">
-        delete from student where id = #{id}
-    </delete>
-
-    <!--统计某个班级下的学生数量（删除班级前校验外键）-->
-    <select id="countByClassId" resultType="int">
-        select count(*) from student where class_id = #{classId}
     </select>
 </mapper>

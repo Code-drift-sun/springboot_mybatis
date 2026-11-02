@@ -1,78 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<!--namespace:命令空间。现在可以随便起名。
-后续需要和dao的名称一致。
+<!--班级表全是单表操作，已全部交给MyBatis-Plus的BaseMapper完成，此处无需再写SQL。
+后续如果出现班级的关联查询（多表），再在这里补充即可。
 -->
 <mapper namespace="com.aaa.sm.dao.ClazzDao">
 
-    <!--列名和属于名之间的映射：-->
-    <resultMap id="ClazzMapper" type="Clazz">
-        <id column="id" property="cid"/>
-        <result column="class_name" property="name"/>
-        <result column="grade" property="grade"/>
-        <result column="head_teacher" property="teacher"/>
-        <result column="room" property="room"/>
-    </resultMap>
-
-    <!--查询条件复用-->
-    <!--suppress SqlResolve -->
-    <sql id="queryCondition">
-        <where>
-            <if test="name != null and name != ''">
-                and class_name like concat('%', #{name}, '%')
-            </if>
-            <if test="room != null and room != ''">
-                and room like concat('%', #{room}, '%')
-            </if>
-        </where>
-    </sql>
-
-    <select id="getById" resultMap="ClazzMapper">
-        select id, class_name, grade, head_teacher, room from class where id=#{id}
-    </select>
-
-    <!--查询全部班级：前端下拉框用-->
-    <select id="listAll" resultMap="ClazzMapper">
-        select id, class_name, grade, head_teacher, room from class order by id
-    </select>
-
-    <!--条件查询：分页由PageHelper插件拦截并自动拼接limit，这里不要写limit-->
-    <select id="list" resultMap="ClazzMapper">
-        select id, class_name, grade, head_teacher, room
-        from class
-        <include refid="queryCondition"/>
-        order by id asc
-    </select>
-
-    <!--insert: 新增班级操作-->
-    <insert id="insert">
-        insert into class(class_name, grade, head_teacher, room)
-        values(#{name}, #{grade}, #{teacher}, #{room})
-    </insert>
-
-    <!--update: 修改班级操作，用set+if实现按需更新，没传的字段保持原值-->
-    <update id="update">
-        update class
-        <set>
-            <if test="name != null and name != ''">
-                class_name = #{name},
-            </if>
-            <if test="grade != null and grade != ''">
-                grade = #{grade},
-            </if>
-            <if test="teacher != null and teacher != ''">
-                head_teacher = #{teacher},
-            </if>
-            <if test="room != null and room != ''">
-                room = #{room},
-            </if>
-        </set>
-        where id = #{cid}
-    </update>
-
-    <!--delete: 删除班级操作-->
-    <delete id="deleteById">
-        delete from class where id = #{id}
-    </delete>
 </mapper>

@@ -1,0 +1,84 @@
+2026-11-02 20:42:54 [main] INFO  c.a.sm.SpringbootMybatisApplication - Starting SpringbootMybatisApplication using Java 21.0.12.1 with PID 18936 (D:\Dev\JavaProjects\springboot_mybatis\target\classes started by jshxg in D:\Dev\JavaProjects\springboot_mybatis)
+2026-11-02 20:42:54 [main] DEBUG c.a.sm.SpringbootMybatisApplication - Running with Spring Boot v4.1.2, Spring v7.0.10
+2026-11-02 20:42:54 [main] INFO  c.a.sm.SpringbootMybatisApplication - No active profile set, falling back to 1 default profile: "default"
+2026-11-02 20:42:56 [main] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-11-02 20:42:56 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-11-02 20:42:56 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-11-02 20:42:56 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.27]
+2026-11-02 20:42:56 [main] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 1878 ms
+2026-11-02 20:42:56 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2026-11-02 20:42:56 [main] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2026-11-02 20:42:57 [main] INFO  c.b.m.s.MybatisPlusApplicationContextAware - Register ApplicationContext instances org.springframework.boot.web.server.servlet.context.AnnotationConfigServletWebServerApplicationContext@3a393455
+2026-11-02 20:42:57 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-11-02 20:42:57 [main] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-11-02 20:42:57 [main] INFO  c.a.sm.SpringbootMybatisApplication - Started SpringbootMybatisApplication in 4.464 seconds (process running for 6.505)
+2026-11-02 20:45:06 [http-nio-8080-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-02 20:45:06 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-11-02 20:45:06 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 32 ms
+2026-11-02 20:45:09 [http-nio-8080-exec-2] DEBUG com.aaa.sm.dao.ClazzDao.selectList - ==>  Preparing: SELECT id AS cid,class_name AS name,grade,head_teacher AS teacher,room FROM class ORDER BY id ASC
+2026-11-02 20:45:09 [http-nio-8080-exec-1] DEBUG c.aaa.sm.dao.StudentDao.list_COUNT - ==>  Preparing: SELECT count(0) FROM student s LEFT JOIN class c ON s.class_id = c.id
+2026-11-02 20:45:09 [http-nio-8080-exec-2] DEBUG com.aaa.sm.dao.ClazzDao.selectList - ==> Parameters: 
+2026-11-02 20:45:09 [http-nio-8080-exec-1] DEBUG c.aaa.sm.dao.StudentDao.list_COUNT - ==> Parameters: 
+2026-11-02 20:45:10 [http-nio-8080-exec-1] DEBUG c.aaa.sm.dao.StudentDao.list_COUNT - <==      Total: 1
+2026-11-02 20:45:10 [http-nio-8080-exec-2] DEBUG com.aaa.sm.dao.ClazzDao.selectList - <==      Total: 6
+2026-11-02 20:45:10 [http-nio-8080-exec-1] DEBUG com.aaa.sm.dao.StudentDao.list - ==>  Preparing: select s.id, s.student_no, s.name, s.gender, s.birthday, s.class_id, s.phone, c.id as cid, c.class_name, c.grade, c.head_teacher, c.room from student s left join class c on s.class_id = c.id order by s.id asc LIMIT ?
+2026-11-02 20:45:10 [http-nio-8080-exec-1] DEBUG com.aaa.sm.dao.StudentDao.list - ==> Parameters: 5(Integer)
+2026-11-02 20:45:10 [http-nio-8080-exec-1] DEBUG com.aaa.sm.dao.StudentDao.list - <==      Total: 5
+2026-11-02 20:45:17 [http-nio-8080-exec-3] DEBUG c.aaa.sm.dao.StudentDao.list_COUNT - ==>  Preparing: SELECT count(0) FROM student s LEFT JOIN class c ON s.class_id = c.id WHERE s.name LIKE concat('%', ?, '%')
+2026-11-02 20:45:17 [http-nio-8080-exec-3] DEBUG c.aaa.sm.dao.StudentDao.list_COUNT - ==> Parameters: 张(String)
+2026-11-02 20:45:17 [http-nio-8080-exec-3] DEBUG c.aaa.sm.dao.StudentDao.list_COUNT - <==      Total: 1
+2026-11-02 20:45:17 [http-nio-8080-exec-3] DEBUG com.aaa.sm.dao.StudentDao.list - ==>  Preparing: select s.id, s.student_no, s.name, s.gender, s.birthday, s.class_id, s.phone, c.id as cid, c.class_name, c.grade, c.head_teacher, c.room from student s left join class c on s.class_id = c.id WHERE s.name like concat('%', ?, '%') order by s.id asc LIMIT ?
+2026-11-02 20:45:17 [http-nio-8080-exec-3] DEBUG com.aaa.sm.dao.StudentDao.list - ==> Parameters: 张(String), 5(Integer)
+2026-11-02 20:45:17 [http-nio-8080-exec-3] DEBUG com.aaa.sm.dao.StudentDao.list - <==      Total: 3
+2026-11-02 20:45:19 [http-nio-8080-exec-4] DEBUG c.aaa.sm.dao.StudentDao.list_COUNT - ==>  Preparing: SELECT count(0) FROM student s LEFT JOIN class c ON s.class_id = c.id
+2026-11-02 20:45:19 [http-nio-8080-exec-4] DEBUG c.aaa.sm.dao.StudentDao.list_COUNT - ==> Parameters: 
+2026-11-02 20:45:19 [http-nio-8080-exec-4] DEBUG c.aaa.sm.dao.StudentDao.list_COUNT - <==      Total: 1
+2026-11-02 20:45:19 [http-nio-8080-exec-4] DEBUG com.aaa.sm.dao.StudentDao.list - ==>  Preparing: select s.id, s.student_no, s.name, s.gender, s.birthday, s.class_id, s.phone, c.id as cid, c.class_name, c.grade, c.head_teacher, c.room from student s left join class c on s.class_id = c.id order by s.id asc LIMIT ?
+2026-11-02 20:45:19 [http-nio-8080-exec-4] DEBUG com.aaa.sm.dao.StudentDao.list - ==> Parameters: 5(Integer)
+2026-11-02 20:45:19 [http-nio-8080-exec-4] DEBUG com.aaa.sm.dao.StudentDao.list - <==      Total: 5
+2026-11-02 20:45:33 [http-nio-8080-exec-5] DEBUG c.aaa.sm.dao.StudentDao.selectById - ==>  Preparing: SELECT id,student_no AS no,name,gender,birthday,class_id,phone FROM student WHERE id=?
+2026-11-02 20:45:33 [http-nio-8080-exec-5] DEBUG c.aaa.sm.dao.StudentDao.selectById - ==> Parameters: 3(Integer)
+2026-11-02 20:45:33 [http-nio-8080-exec-5] DEBUG c.aaa.sm.dao.StudentDao.selectById - <==      Total: 1
+2026-11-02 20:45:33 [http-nio-8080-exec-5] DEBUG c.aaa.sm.dao.StudentDao.updateById - ==>  Preparing: UPDATE student SET student_no=?, name=?, gender=?, birthday=?, class_id=?, phone=? WHERE id=?
+2026-11-02 20:45:33 [http-nio-8080-exec-5] DEBUG c.aaa.sm.dao.StudentDao.updateById - ==> Parameters: 20240103(String), 刘洋(String), 女(String), 2008-11-05 00:00:00.0(Timestamp), 7(Integer), 13800000003(String), 3(Integer)
+2026-11-02 20:45:33 [http-nio-8080-exec-5] DEBUG c.aaa.sm.dao.StudentDao.updateById - <==    Updates: 1
+2026-11-02 20:45:33 [http-nio-8080-exec-6] DEBUG c.aaa.sm.dao.StudentDao.list_COUNT - ==>  Preparing: SELECT count(0) FROM student s LEFT JOIN class c ON s.class_id = c.id
+2026-11-02 20:45:33 [http-nio-8080-exec-6] DEBUG c.aaa.sm.dao.StudentDao.list_COUNT - ==> Parameters: 
+2026-11-02 20:45:33 [http-nio-8080-exec-6] DEBUG c.aaa.sm.dao.StudentDao.list_COUNT - <==      Total: 1
+2026-11-02 20:45:33 [http-nio-8080-exec-6] DEBUG com.aaa.sm.dao.StudentDao.list - ==>  Preparing: select s.id, s.student_no, s.name, s.gender, s.birthday, s.class_id, s.phone, c.id as cid, c.class_name, c.grade, c.head_teacher, c.room from student s left join class c on s.class_id = c.id order by s.id asc LIMIT ?
+2026-11-02 20:45:33 [http-nio-8080-exec-6] DEBUG com.aaa.sm.dao.StudentDao.list - ==> Parameters: 5(Integer)
+2026-11-02 20:45:33 [http-nio-8080-exec-6] DEBUG com.aaa.sm.dao.StudentDao.list - <==      Total: 5
+2026-11-02 20:46:01 [http-nio-8080-exec-7] DEBUG c.a.sm.dao.ClazzDao.selectList_COUNT - ==>  Preparing: SELECT count(0) FROM class
+2026-11-02 20:46:01 [http-nio-8080-exec-7] DEBUG c.a.sm.dao.ClazzDao.selectList_COUNT - ==> Parameters: 
+2026-11-02 20:46:01 [http-nio-8080-exec-7] DEBUG c.a.sm.dao.ClazzDao.selectList_COUNT - <==      Total: 1
+2026-11-02 20:46:01 [http-nio-8080-exec-7] DEBUG com.aaa.sm.dao.ClazzDao.selectList - ==>  Preparing: SELECT id AS cid,class_name AS name,grade,head_teacher AS teacher,room FROM class ORDER BY id ASC LIMIT ?
+2026-11-02 20:46:01 [http-nio-8080-exec-7] DEBUG com.aaa.sm.dao.ClazzDao.selectList - ==> Parameters: 5(Integer)
+2026-11-02 20:46:01 [http-nio-8080-exec-7] DEBUG com.aaa.sm.dao.ClazzDao.selectList - <==      Total: 5
+2026-11-02 20:46:03 [http-nio-8080-exec-8] DEBUG c.a.sm.dao.ClazzDao.selectList_COUNT - ==>  Preparing: SELECT count(0) FROM class
+2026-11-02 20:46:03 [http-nio-8080-exec-8] DEBUG c.a.sm.dao.ClazzDao.selectList_COUNT - ==> Parameters: 
+2026-11-02 20:46:03 [http-nio-8080-exec-8] DEBUG c.a.sm.dao.ClazzDao.selectList_COUNT - <==      Total: 1
+2026-11-02 20:46:03 [http-nio-8080-exec-8] DEBUG com.aaa.sm.dao.ClazzDao.selectList - ==>  Preparing: SELECT id AS cid,class_name AS name,grade,head_teacher AS teacher,room FROM class ORDER BY id ASC LIMIT ?, ?
+2026-11-02 20:46:03 [http-nio-8080-exec-8] DEBUG com.aaa.sm.dao.ClazzDao.selectList - ==> Parameters: 5(Long), 5(Integer)
+2026-11-02 20:46:03 [http-nio-8080-exec-8] DEBUG com.aaa.sm.dao.ClazzDao.selectList - <==      Total: 1
+2026-11-02 20:46:45 [http-nio-8080-exec-9] DEBUG com.aaa.sm.dao.ClazzDao.insert - ==>  Preparing: INSERT INTO class ( class_name, grade, head_teacher, room ) VALUES ( ?, ?, ?, ? )
+2026-11-02 20:46:45 [http-nio-8080-exec-9] DEBUG com.aaa.sm.dao.ClazzDao.insert - ==> Parameters: 高二(10)班(String), 高二(String), 张文君(String), A10(String)
+2026-11-02 20:46:45 [http-nio-8080-exec-9] DEBUG com.aaa.sm.dao.ClazzDao.insert - <==    Updates: 1
+2026-11-02 20:46:45 [http-nio-8080-exec-10] DEBUG c.a.sm.dao.ClazzDao.selectList_COUNT - ==>  Preparing: SELECT count(0) FROM class
+2026-11-02 20:46:45 [http-nio-8080-exec-10] DEBUG c.a.sm.dao.ClazzDao.selectList_COUNT - ==> Parameters: 
+2026-11-02 20:46:45 [http-nio-8080-exec-10] DEBUG c.a.sm.dao.ClazzDao.selectList_COUNT - <==      Total: 1
+2026-11-02 20:46:45 [http-nio-8080-exec-10] DEBUG com.aaa.sm.dao.ClazzDao.selectList - ==>  Preparing: SELECT id AS cid,class_name AS name,grade,head_teacher AS teacher,room FROM class ORDER BY id ASC LIMIT ?, ?
+2026-11-02 20:46:45 [http-nio-8080-exec-10] DEBUG com.aaa.sm.dao.ClazzDao.selectList - ==> Parameters: 5(Long), 5(Integer)
+2026-11-02 20:46:45 [http-nio-8080-exec-10] DEBUG com.aaa.sm.dao.ClazzDao.selectList - <==      Total: 2
+2026-11-02 20:46:48 [http-nio-8080-exec-2] DEBUG com.aaa.sm.dao.ClazzDao.selectList - ==>  Preparing: SELECT id AS cid,class_name AS name,grade,head_teacher AS teacher,room FROM class ORDER BY id ASC
+2026-11-02 20:46:48 [http-nio-8080-exec-2] DEBUG com.aaa.sm.dao.ClazzDao.selectList - ==> Parameters: 
+2026-11-02 20:46:48 [http-nio-8080-exec-2] DEBUG com.aaa.sm.dao.ClazzDao.selectList - <==      Total: 7
+2026-11-02 20:46:48 [http-nio-8080-exec-1] DEBUG c.aaa.sm.dao.StudentDao.list_COUNT - ==>  Preparing: SELECT count(0) FROM student s LEFT JOIN class c ON s.class_id = c.id
+2026-11-02 20:46:48 [http-nio-8080-exec-1] DEBUG c.aaa.sm.dao.StudentDao.list_COUNT - ==> Parameters: 
+2026-11-02 20:46:48 [http-nio-8080-exec-1] DEBUG c.aaa.sm.dao.StudentDao.list_COUNT - <==      Total: 1
+2026-11-02 20:46:48 [http-nio-8080-exec-1] DEBUG com.aaa.sm.dao.StudentDao.list - ==>  Preparing: select s.id, s.student_no, s.name, s.gender, s.birthday, s.class_id, s.phone, c.id as cid, c.class_name, c.grade, c.head_teacher, c.room from student s left join class c on s.class_id = c.id order by s.id asc LIMIT ?
+2026-11-02 20:46:48 [http-nio-8080-exec-1] DEBUG com.aaa.sm.dao.StudentDao.list - ==> Parameters: 5(Integer)
+2026-11-02 20:46:48 [http-nio-8080-exec-1] DEBUG com.aaa.sm.dao.StudentDao.list - <==      Total: 5
+2026-11-02 20:47:12 [SpringApplicationShutdownHook] INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-11-02 20:47:12 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-11-02 20:47:12 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2026-11-02 20:47:12 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
